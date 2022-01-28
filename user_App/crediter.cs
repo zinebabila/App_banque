@@ -18,13 +18,15 @@ namespace user_App
         public crediter()
         {
             InitializeComponent();
-            int id = Form3.cpt_auto.numcompte;
+            int id = tablecomptes.cpt_auto.numcompte;
+            int i = Form1.client_auto.id_client;
+           
 
             SqlCommand commande;
             SqlDataReader reader;
             string requete;
 
-            requete = "select *from Client where id=" + id;
+            requete = "select *from Client where id=" + i;
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
@@ -38,7 +40,7 @@ namespace user_App
             label1.Text = res;
 
 
-            requete = "select *from compte where id_client=" + id;
+            requete = "select *from compte where id=" + id;
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
@@ -49,6 +51,7 @@ namespace user_App
                 res = res + reader["solde"].ToString();
 
 
+
             }
             label2.Text = res;
 
@@ -57,13 +60,13 @@ namespace user_App
         private void button1_Click(object sender, EventArgs e)
         {
             String somme = textBox1.Text;
-            Form3.cpt_auto.crediter(float.Parse(somme));
+            tablecomptes.cpt_auto.crediter(float.Parse(somme));
 
 
             SqlDataAdapter adap = new SqlDataAdapter();
             string requete;
 
-            requete = "update compte set solde = solde+" + somme + "where id=" + Form3.cpt_auto.numcompte;
+            requete = "update compte set solde = solde+" + somme + "where id=" + tablecomptes.cpt_auto.numcompte;
 
             adap.UpdateCommand = new SqlCommand(requete, Form1.connexion);
             adap.UpdateCommand.ExecuteNonQuery();
@@ -74,5 +77,7 @@ namespace user_App
             a1.Show();
 
         }
+
+       
     }
 }

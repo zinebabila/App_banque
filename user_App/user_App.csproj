@@ -75,6 +75,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tablecomptes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tablecomptes.Designer.cs">
+      <DependentUpon>tablecomptes.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="crediter.resx">
       <DependentUpon>crediter.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="tablecomptes.resx">
+      <DependentUpon>tablecomptes.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

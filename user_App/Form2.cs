@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using App_ban;
 namespace user_App
 {
     public partial class Form2 : Form
@@ -16,13 +17,15 @@ namespace user_App
         public Form2()
         {
             InitializeComponent();
-            int id = Form3.cpt_auto.numcompte ;
+            int id = tablecomptes.cpt_auto.numcompte ;
+            int i = Form1.client_auto.id_client;
+           Compte  compte = tablecomptes.cpt_auto;
 
             SqlCommand commande;
             SqlDataReader reader;
             string requete;
 
-            requete = "select *from Client where id=" + id;
+            requete = "select *from Client where id=" + i;
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
@@ -36,7 +39,7 @@ namespace user_App
             label1.Text = res;
 
 
-            requete = "select *from compte where id_client=" + id;
+            requete = "select *from compte where id=" + id;
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
@@ -45,6 +48,7 @@ namespace user_App
             while (reader.Read())
             {
                 res = res + reader["solde"].ToString();
+
 
 
             }
@@ -58,12 +62,12 @@ namespace user_App
         private void button1_Click(object sender, EventArgs e)
         {
             String somme = textBox1.Text;
-            Form3.cpt_auto.debiter(float.Parse(somme));
+            tablecomptes.cpt_auto.debiter(float.Parse(somme));
            
             SqlDataAdapter adap=new SqlDataAdapter();
             string requete;
 
-            requete = "update compte set solde = solde-" +somme+"where id="+Form3.cpt_auto.numcompte;
+            requete = "update compte set solde = solde-" +somme+"where id="+tablecomptes.cpt_auto.numcompte;
 
             adap.UpdateCommand= new SqlCommand(requete, Form1.connexion);
             adap.UpdateCommand.ExecuteNonQuery();

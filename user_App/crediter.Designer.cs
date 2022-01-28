@@ -59,9 +59,9 @@ namespace user_App
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(76, 151);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.label3.Text = "Somme";
             // 
             // textBox1
             // 

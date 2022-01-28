@@ -17,18 +17,20 @@ namespace user_App
         
         static Form2 a5;
         static crediter a2;
-        static public Compte cpt_auto;
+     
         public Form3()
         {
            
             InitializeComponent();
             int id = Form1.client_auto.id_client;
-
+            int idc = tablecomptes.cpt_auto.numcompte;
+           
             SqlCommand commande;
             SqlDataReader reader;
             string requete;
 
             requete = "select *from Client where id_client=" + id;
+
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
@@ -43,7 +45,7 @@ namespace user_App
             label1.Text = res;
 
            
-            requete = "select *from compte where id_client=" + id;
+            requete = "select *from compte where id=" + idc;
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
@@ -52,8 +54,7 @@ namespace user_App
             while (reader.Read())
             {
                 res = res + reader["solde"].ToString();
-                Compte cp = new Compte(int.Parse(reader["id"].ToString()),Form1.client_auto,float.Parse(reader["solde"].ToString()));
-                cpt_auto = cp;
+        
 
 
             }

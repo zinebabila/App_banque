@@ -14,7 +14,7 @@ namespace user_App
     public partial class Form1 : Form
     {
        static public SqlConnection connexion;
-       static Form3 a1;
+       static tablecomptes a1;
         List<Client> clients = new List<Client>();
         
         static public  Client client_auto;
@@ -40,12 +40,12 @@ namespace user_App
                 Client c = new Client(idclt,reader["nom"].ToString(), reader["prenom"].ToString(), reader["adresse"].ToString(), reader["identifiant"].ToString(), reader["mot_de_passe"].ToString());
                 SqlCommand com;
                 SqlDataReader re;
-                string req = "select* from compte where id_client=" + idclt;
+                string req = "select * from compte where id_client=" + idclt;
                 com = new SqlCommand(req, connexion);
                 re = com.ExecuteReader();
                 while (re.Read())
                 {
-                    Compte cp1 = new Compte(int.Parse(re["id"].ToString()), c,float.Parse(re["solde"].ToString()));
+                    Compte cp1 = new Compte(int.Parse(re["id"].ToString()), c,float.Parse(re["solde"].ToString()),int.Parse(re["type"].ToString()));
                     c.comptes.Add(cp1);
                 }
                 
@@ -71,7 +71,7 @@ namespace user_App
                     client_auto = clients[i];
 
                     this.Hide();
-                    a1 = new Form3();
+                    a1 = new tablecomptes();
                     a1.Show();
 
                     res = true;
