@@ -17,6 +17,7 @@ namespace user_App
         
         static Form2 a5;
         static crediter a2;
+        static Historique a6;
      
         public Form3()
         {
@@ -78,6 +79,14 @@ namespace user_App
                 a2.Show();
             }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            a6 = new Historique();
+            a6.Show();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace App_ban
 		//agregation
 	     //Devise* solde;
 		 //static Devise* plafond; //une valeur qu'on ne peut pas la depasser en cas de retrait
-		 //vector<Operation*> historique;
+		public  List<Operation> historique;
 		 // Methodes
 
 		public Compte(int id,Client clt,float solde,int ch) {
@@ -25,6 +25,7 @@ namespace App_ban
 			this.solde = solde;
 			plafond = 1000;
 			this.choix = ch;
+			this.historique = new List<Operation>();
 
 		}
 		//virtual void consulter();
@@ -49,6 +50,10 @@ namespace App_ban
 			
 				return " numero de compte est :" + this.numcompte + " le type du compte est courant epagne";
 		}
+		public void ajouter_op(Operation oper)
+        {
+			this.historique.Add(oper);
+        }
 		
 		
 	}

@@ -15,6 +15,7 @@ namespace user_App
     public partial class crediter : Form
     {
        static Form3 a1;
+        static Historique a6;
         public crediter()
         {
             InitializeComponent();
@@ -65,12 +66,18 @@ namespace user_App
 
             SqlDataAdapter adap = new SqlDataAdapter();
             string requete;
-
+           
             requete = "update compte set solde = solde+" + somme + "where id=" + tablecomptes.cpt_auto.numcompte;
 
             adap.UpdateCommand = new SqlCommand(requete, Form1.connexion);
             adap.UpdateCommand.ExecuteNonQuery();
             adap.UpdateCommand.Dispose();
+            SqlCommand commande;
+
+            commande = Form1.connexion.CreateCommand();
+            commande.CommandText= "INSERT INTO Operation(id, descri , la_date, somme, id_compte) VALUES (" + int.Parse(new Random().Next().ToString()) + " , 'Debiter' ,'" + DateTime.Now + " ' , " + somme + " , " + tablecomptes.cpt_auto.numcompte + " );";
+
+            commande.ExecuteNonQuery();
 
             this.Hide();
             a1 = new Form3();
@@ -78,6 +85,11 @@ namespace user_App
 
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            a6 = new Historique();
+            a6.Show();
+        }
     }
 }
