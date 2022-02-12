@@ -10,11 +10,11 @@ namespace App_ban
     public class Client
     {
             public int id_client;
-            private string nom;
-            private string prenom;
-            private string adresse;
-            private string login;
-            private string password;
+            public string nom;
+            public string prenom;
+            public string adresse;
+            public string login;
+            public string password;
             public List<Compte> comptes;
 
         public Client(int id, string n, string p, string c, string l, string pass)
