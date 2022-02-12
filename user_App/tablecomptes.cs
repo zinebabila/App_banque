@@ -30,14 +30,16 @@ namespace user_App
 
             commande = new SqlCommand(requete, Form1.connexion);
             reader = commande.ExecuteReader();
-            String res = "  ";
+          
             while (reader.Read())
             {
-                res = res + reader["nom"].ToString() + "     " + reader["prenom"].ToString() + "    " + reader["adresse"].ToString();
+               label5.Text= reader["nom"].ToString();
+              label1.Text=  reader["prenom"].ToString();
+               label2.Text=  reader["adresse"].ToString();
 
 
             }
-            label1.Text = res;
+          
 
 
             foreach(Compte i in Form1.client_auto.comptes)

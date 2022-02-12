@@ -15,6 +15,7 @@ namespace user_App
     public partial class Historique : Form
     {
         static Form3 a2;
+        static tablecomptes a1;
         public Historique()
         {
             InitializeComponent();
@@ -60,6 +61,11 @@ namespace user_App
             a2.Show();
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            a1 = new tablecomptes();
+            a1.Show();
+        }
     }
 }

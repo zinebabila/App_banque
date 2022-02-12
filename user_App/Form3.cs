@@ -24,7 +24,8 @@ namespace user_App
            
             InitializeComponent();
             int id = Form1.client_auto.id_client;
-            int idc = tablecomptes.cpt_auto.numcompte;
+            Compte c = tablecomptes.cpt_auto;
+            int idc = c.numcompte;
            
             SqlCommand commande;
             SqlDataReader reader;
