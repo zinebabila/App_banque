@@ -69,7 +69,7 @@ namespace user_App
             SqlCommand commande;
 
             commande = Form1.connexion.CreateCommand();
-            commande.CommandText = "INSERT INTO Operation(id , descri , la_date ,somme, id_compte) VALUES ("+  int.Parse(new Random().Next().ToString())+" , 'Debiter' ,'" + DateTime.Now + " ' , " + somme + " , " + tablecomptes.cpt_auto.numcompte + " );";
+            commande.CommandText = "INSERT INTO Operation(id , descri , la_date ,somme, id_compte) VALUES ("+  int.Parse(new Random().Next().ToString())+ " , 'Debiter' ,convert(datetime,'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")+ " ' ), " + somme + " , " + tablecomptes.cpt_auto.numcompte + " );";
 
             commande.ExecuteNonQuery();
 
